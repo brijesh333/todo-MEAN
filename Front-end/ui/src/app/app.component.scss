@@ -1,0 +1,18 @@
+div{
+    &.container{
+        div{
+            &.header{
+                min-height: 50px;
+                background-color: #ddd;
+                margin-bottom: 14px;
+            }
+            &.body-container{
+                
+            }
+            &.footer{
+
+            }
+        }
+    }
+    
+}
