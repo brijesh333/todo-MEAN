@@ -116,7 +116,9 @@ var updateData = async function (payload) {
                     _id: ObjectId(payload.oldValue.id)
                 };
                 var newValue = {
-                    $set: payload.newValue
+                    $set: {
+                        completed : true
+                    }
                 };
                 db.collection('todo').updateOne(oldValue, newValue, function (err, res) {
                     if (err) {
