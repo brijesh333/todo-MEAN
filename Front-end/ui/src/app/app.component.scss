@@ -10,7 +10,9 @@ div{
                 
             }
             &.footer{
-
+                min-height: 40px;
+                border-top: 1px solid #aaa;
+                margin-top: 10px;
             }
         }
     }

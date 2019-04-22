@@ -1,20 +1,19 @@
 <div class="container">
   <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="inputGroup-sizing-default">Task Name :</span>
-    </div>
-    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
-      [(ngModel)]="taskName">
-    <div class="input-group-append">
-      <button type="button" class="btn btn-success" (click)="addTask()">Add</button>
-    </div>
+    <input type="text" class="form-control" placeHolder="Task name" aria-label="Default"
+      aria-describedby="inputGroup-sizing-default" [(ngModel)]="taskName" (keyup.enter)="addTask()">
 
   </div>
   <div class="task-list-container">
     <ul class="list-group">
       <li class="list-group-item" *ngFor='let task of taskList'>
-        {{task.taskName}}
-        <button type="button" class="close" aria-label="Close" (click)="deleteTask(task._id)">
+        <span *ngIf="!task.completed">
+          {{task.taskName}}
+        </span>
+        <span *ngIf="task.completed">
+          <s>{{task.taskName}}</s>
+        </span>
+        <button type="button" class="close" aria-label="Close" (click)="updateTask(task._id)" *ngIf="!task.completed">
           <span aria-hidden="true">&times;</span>
         </button>
       </li>

@@ -52,5 +52,15 @@ export class TodoComponent implements OnInit {
                 }
             );
     }
+    updateTask(id) {
+        this.dataService.updateTask(id)
+            .subscribe(
+                response => {
+                    console.log(response);
+                    this.message = response;
+                    this.fetchAllData();
+                }
+            );
+    }
 
 }

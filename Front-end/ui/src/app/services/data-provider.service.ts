@@ -34,12 +34,10 @@ export class DataProviderService {
             .pipe(
                 map(
                     (response: any) => {
-                        if (response.status === 'SUCCESS') {
-                            return response.message;
-                        }
-                        else if (response.status === 'ERROR') {
-                            return 'Error Occurred';
-                        }
+                        return response.message;
+                    },
+                    (error: Error) => {
+                        return 'Error Occurred';
                     }
                 )
             );
@@ -50,14 +48,27 @@ export class DataProviderService {
             .pipe(
                 map(
                     (response: any) => {
-                        if (response.status === 'SUCCESS') {
-                            return response.message;
-                        }
-                        else if (response.status === 'ERROR') {
-                            return 'Error Occurred';
-                        }
+                        return response.message;
                     },
-                    (err: any) => {
+                    (error: Error) => {
+                        return 'Error occurred';
+                    }
+                )
+            );
+    }
+    updateTask(id) {
+        const payload = {
+            oldValue: {
+                id
+            }
+        };
+        return this.http.post(this.url + '/update', payload)
+            .pipe(
+                map(
+                    (response: any) => {
+                        return response.message;
+                    },
+                    (error: Error) => {
                         return 'Error occurred';
                     }
                 )
